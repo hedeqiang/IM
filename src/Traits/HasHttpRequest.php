@@ -1,6 +1,16 @@
 <?php
 
+/*
+ * This file is part of the hedeqiang/ten-im.
+ *
+ * (c) hedeqiang<laravel_code@163.com>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ */
+
 namespace Hedeqiang\TenIM\Traits;
+
 use GuzzleHttp\Client;
 use Psr\Http\Message\ResponseInterface;
 
@@ -85,6 +95,7 @@ trait HasHttpRequest
             'base_uri' => method_exists($this, 'getBaseUri') ? $this->getBaseUri() : '',
             'timeout' => method_exists($this, 'getTimeout') ? $this->getTimeout() : 10.0,
         ];
+
         return $options;
     }
 
@@ -118,7 +129,7 @@ trait HasHttpRequest
         } elseif (false !== stripos($contentType, 'xml')) {
             return json_decode(json_encode(simplexml_load_string($contents)), true);
         }
+
         return $contents;
     }
-
 }
