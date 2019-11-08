@@ -1,6 +1,12 @@
 {
     "name": "hedeqiang\/ten-im",
-    "description": "IM",
+    "description": "腾讯云即时通信 SDK for PHP",
+    "keywords": [
+        "php",
+        "IM",
+        "即时通信",
+        "腾讯云"
+    ],
     "license": "MIT",
     "authors": [
         {
