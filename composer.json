@@ -1,0 +1,20 @@
+{
+    "name": "hedeqiang\/ten-im",
+    "description": "IM",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "hedeqiang",
+            "email": "laravel_code@163.com"
+        }
+    ],
+    "require": {
+        "tencent/tls-sig-api-v2": "1.0",
+        "guzzlehttp/guzzle": "^6.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Hedeqiang\\TenIM\\": "./src/"
+        }
+    }
+}
