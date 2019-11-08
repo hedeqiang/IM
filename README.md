@@ -76,6 +76,38 @@ print_r($im->send('profile','portrait_set',$params));
 }
 ```
 
+### 单发单聊消息
+```php
+$params = [
+    'SyncOtherMachine' => 1, // 消息不同步至发送方
+    'From_Account' => '1',
+    'To_Account' => '2',
+    'MsgRandom' => 1287657,
+    'MsgTimeStamp' => 1557387418,
+    'MsgBody' => [
+        [
+            'MsgType' => 'TIMTextElem',
+            'MsgContent' => [
+                'Text' => '晚上去撸串啊'
+            ]
+        ]
+    ]
+];
+
+print_r($im->send('openim','sendmsg',$params));
+```
+
+返回示例：
+```php
+{
+    "ActionStatus":"OK",
+    "ErrorInfo":"",
+    "ErrorCode":0,
+    "MsgTime":1573179125,
+    "MsgKey":"748144182_1287657_1573179125"
+}
+```
+
 > 其中 `send` 方法接收三个参数。第一个参数 $servicename : 内部服务名，不同的 servicename 对应不同的服务类型；第二个参数 `$command`：命令字，与 servicename 组合用来标识具体的业务功能；第三个参数为请求包主体 
 
 > 示例：`v4/im_open_login_svc/account_import`，其中 `im_open_login_svc` 为 `servicename`； `account_import` 为 `command`
