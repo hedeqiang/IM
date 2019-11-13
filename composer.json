@@ -15,6 +15,7 @@
         }
     ],
     "require": {
+        "php": ">=7.0",
         "tencent/tls-sig-api-v2": "1.0",
         "guzzlehttp/guzzle": "^6.4"
     },
