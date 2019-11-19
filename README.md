@@ -8,6 +8,7 @@
 ```shell
 $ composer require hedeqiang/ten-im -vvv
 ```
+> [Hyperf 扩展包](https://github.com/hedeqiang/hyperf-im)
 
 ## 配置
 使用本扩展前需要登录 [即时通信 IM 控制台](https://console.cloud.tencent.com/avc) 创建应用，配置管理员、获取 app_id、Key 等关键信息
