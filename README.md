@@ -127,6 +127,8 @@ print_r($im->send('openim','sendmsg',$params));
 }
 ```
 
+更多用法请参考 [REST API 接口列表](https://cloud.tencent.com/document/product/269/1520)
+
 TODO
 
 ## Contributing
