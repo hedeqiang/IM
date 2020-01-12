@@ -27,9 +27,9 @@ require __DIR__ .'/vendor/autoload.php';
 use Hedeqiang\TenIM\IM;
 
 $config = [
-    'sdk_app_id' => '14002***',
-    'identifier' => 'hedeqiang',
-    'secret_key' => 'a56e6938cb1a8856d15*****',
+    'sdk_app_id' => '',
+    'identifier' => '',
+    'secret_key' => '',
 ];
 $im = new IM($config);
 
