@@ -26,8 +26,6 @@ class Config implements ArrayAccess
 
     /**
      * Config constructor.
-     *
-     * @param array $config
      */
     public function __construct(array $config)
     {
