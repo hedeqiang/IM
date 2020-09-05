@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the hedeqiang/green.
+ * This file is part of the hedeqiang/ten-im.
  *
  * (c) hedeqiang<laravel_code@163.com>
  *

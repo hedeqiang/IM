@@ -36,7 +36,6 @@ class IM
     /**
      * @param string $servername
      * @param string $command
-     * @param array  $params
      *
      * @return array
      *
@@ -61,11 +60,6 @@ class IM
     /**
      * Build endpoint url.
      *
-     * @param string $servername
-     * @param string $command
-     *
-     * @return string
-     *
      * @throws \Exception
      */
     protected function buildEndpoint(string $servername, string $command): string
@@ -83,11 +77,6 @@ class IM
 
     /**
      * Generate Sign.
-     *
-     * @param string $identifier
-     * @param int    $expires
-     *
-     * @return string
      *
      * @throws \Exception
      */
