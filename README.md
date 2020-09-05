@@ -127,6 +127,89 @@ print_r($im->send('openim','sendmsg',$params));
 }
 ```
 
+
+## 在 Laravel 中使用
+#### 发布配置文件
+```php
+php artisan vendor:publish --provider="Hedeqiang\TenIM\ServiceProvider"
+```
+##### 编写 .env 文件
+```
+SDK_APP_ID=
+IDENTIFIER=
+SECRET_KEY=
+```
+
+### 方法参数注入
+
+```php
+use Hedeqiang\TenIM\IM;
+public function index(IM $im)
+{
+    $params = [
+        'SyncOtherMachine' => 1, // 消息不同步至发送方
+        'From_Account' => '1',
+        'To_Account' => '2',
+        'MsgRandom' => 1287657,
+        'MsgTimeStamp' => 1557387418,
+        'MsgBody' => [
+            [
+                'MsgType' => 'TIMTextElem',
+                'MsgContent' => [
+                    'Text' => '晚上去撸串啊'
+                ]
+            ]
+        ]
+    ];
+    $response = $im->send('openim','sendmsg',$params);
+}
+```
+### 服务名访问
+```php
+
+public function index()
+{
+    $params = [
+        'SyncOtherMachine' => 1, // 消息不同步至发送方
+        'From_Account' => '1',
+        'To_Account' => '2',
+        'MsgRandom' => 1287657,
+        'MsgTimeStamp' => 1557387418,
+        'MsgBody' => [
+            [
+                'MsgType' => 'TIMTextElem',
+                'MsgContent' => [
+                    'Text' => '晚上去撸串啊'
+                ]
+            ]
+        ]
+    ];
+    $response = app('im')->send('openim','sendmsg',$params);
+}
+```
+
+### Facades 门面使用(可以提示)
+```php
+use Hedeqiang\TenIM\Facades\IM;
+$params = [
+        'SyncOtherMachine' => 1, // 消息不同步至发送方
+        'From_Account' => '1',
+        'To_Account' => '2',
+        'MsgRandom' => 1287657,
+        'MsgTimeStamp' => 1557387418,
+        'MsgBody' => [
+            [
+                'MsgType' => 'TIMTextElem',
+                'MsgContent' => [
+                    'Text' => '晚上去撸串啊'
+                ]
+            ]
+        ]
+    ];
+$response = IM::im()->send('openim','sendmsg',$params);
+```
+
+
 更多用法请参考 [REST API 接口列表](https://cloud.tencent.com/document/product/269/1520)
 
 TODO

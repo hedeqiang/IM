@@ -23,5 +23,12 @@
         "psr-4": {
             "Hedeqiang\\TenIM\\": "./src/"
         }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Hedeqiang\\TenIM\\ServiceProvider"
+            ]
+        }
     }
 }
