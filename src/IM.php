@@ -84,6 +84,6 @@ class IM
     {
         $api = new TLSSigAPIv2($this->config->get('sdk_app_id'), $this->config->get('secret_key'));
 
-        return  $api->genSig($identifier, $expires);
+        return $api->genSig($identifier, $expires);
     }
 }
