@@ -18,6 +18,29 @@ $ composer require hedeqiang/ten-im -vvv
 [REST API 接口列表](https://cloud.tencent.com/document/product/269/1520)
 
 ## 使用
+
+
+
+> 其中 `send` 方法接收三个参数。第一个参数 $servicename : 内部服务名，不同的 servicename 对应不同的服务类型；第二个参数 `$command`：命令字，与 servicename 组合用来标识具体的业务功能；第三个参数为请求包主体 
+
+> 示例：`v4/im_open_login_svc/account_import`，其中 `im_open_login_svc` 为 `servicename`； `account_import` 为 `command`
+
+
+请求包示例：
+```php
+{
+    "From_Account":"id",
+    "ProfileItem":
+    [
+        {
+            "Tag":"Tag_Profile_IM_Nick",
+            "Value":"MyNickName"
+        }
+    ]
+}
+```
+
+
 ### 获取用户在线状态
 ```php
 <?php
@@ -109,23 +132,6 @@ print_r($im->send('openim','sendmsg',$params));
 }
 ```
 
-> 其中 `send` 方法接收三个参数。第一个参数 $servicename : 内部服务名，不同的 servicename 对应不同的服务类型；第二个参数 `$command`：命令字，与 servicename 组合用来标识具体的业务功能；第三个参数为请求包主体 
-
-> 示例：`v4/im_open_login_svc/account_import`，其中 `im_open_login_svc` 为 `servicename`； `account_import` 为 `command`
-
-请求包示例：
-```php
-{
-    "From_Account":"id",
-    "ProfileItem":
-    [
-        {
-            "Tag":"Tag_Profile_IM_Nick",
-            "Value":"MyNickName"
-        }
-    ]
-}
-```
 
 
 ## 在 Laravel 中使用
