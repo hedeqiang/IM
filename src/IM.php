@@ -78,12 +78,15 @@ class IM
     /**
      * Generate Sign.
      *
+     * @param string $identifier
+     * @param int $expires
+     * @return string
      * @throws \Exception
      */
     protected function generateSign(string $identifier, int $expires = 15552000): string
     {
         $api = new TLSSigAPIv2($this->config->get('sdk_app_id'), $this->config->get('secret_key'));
 
-        return $api->genSig($identifier, $expires);
+        return $api->genUserSig($identifier, $expires);
     }
 }
