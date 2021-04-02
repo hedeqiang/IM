@@ -42,6 +42,17 @@ $ composer require hedeqiang/ten-im -vvv
 
 ###  导入单个帐号
 ```php
+
+require __DIR__ .'/vendor/autoload.php';
+
+use Hedeqiang\TenIM\IM;
+
+$config = [
+    'sdk_app_id' => '',
+    'identifier' => '',
+    'secret_key' => '',
+];
+$im = new IM($config);
 $params = [
     'Identifier' => "hedeqiang",
     'Nick'       => 'hedeqiang',
@@ -55,18 +66,6 @@ print_r($im->send('im_open_login_svc','account_import',$params));
 ### 获取用户在线状态
 ```php
 <?php
-
-require __DIR__ .'/vendor/autoload.php';
-
-use Hedeqiang\TenIM\IM;
-
-$config = [
-    'sdk_app_id' => '',
-    'identifier' => '',
-    'secret_key' => '',
-];
-$im = new IM($config);
-
 $params = [
     'To_Account' => ['hedeqiang']
 ];
