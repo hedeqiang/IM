@@ -40,6 +40,17 @@ $ composer require hedeqiang/ten-im -vvv
 }
 ```
 
+###  导入单个帐号
+```php
+$params = [
+    'Identifier' => "hedeqiang",
+    'Nick'       => 'hedeqiang',
+    'FaceUrl'    => '',
+];
+
+print_r($im->send('im_open_login_svc','account_import',$params));
+```
+
 
 ### 获取用户在线状态
 ```php
