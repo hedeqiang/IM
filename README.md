@@ -10,6 +10,8 @@ $ composer require hedeqiang/ten-im -vvv
 ```
 > [Hyperf 扩展包](https://github.com/hedeqiang/hyperf-im)
 
+> 说明：本项目默认会引入 [tencent/tls-sig-api-v2](https://github.com/tencentyun/tls-sig-api-v2-php) 扩展包，所以你不需要手动引入 `tencent/tls-sig-api-v2`,否则可能会造成依赖冲突
+
 ## 配置
 使用本扩展前需要登录 [即时通信 IM 控制台](https://console.cloud.tencent.com/avc) 创建应用，配置管理员、获取 app_id、Key 等关键信息
 
