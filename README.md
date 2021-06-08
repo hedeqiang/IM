@@ -2,6 +2,7 @@
 
 <p align="center">腾讯云 IM.</p>
 
+![StyleCI build status](https://github.styleci.io/repos/220258775/shield) 
 
 ## 安装
 
