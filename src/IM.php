@@ -37,10 +37,10 @@ class IM
      * @param string $servername
      * @param string $command
      *
-     * @return array
-     *
      * @throws Exception
      * @throws HttpException
+     *
+     * @return array
      */
     public function send($servername, $command, array $params = [])
     {
@@ -65,10 +65,10 @@ class IM
     protected function buildEndpoint(string $servername, string $command): string
     {
         $query = http_build_query([
-            'sdkappid' => $this->config->get('sdk_app_id'),
-            'identifier' => $this->config->get('identifier'),
-            'usersig' => $this->generateSign($this->config->get('identifier')),
-            'random' => mt_rand(0, 4294967295),
+            'sdkappid'    => $this->config->get('sdk_app_id'),
+            'identifier'  => $this->config->get('identifier'),
+            'usersig'     => $this->generateSign($this->config->get('identifier')),
+            'random'      => mt_rand(0, 4294967295),
             'contenttype' => self::ENDPOINT_FORMAT,
         ]);
 
@@ -79,9 +79,11 @@ class IM
      * Generate Sign.
      *
      * @param string $identifier
-     * @param int $expires
-     * @return string
+     * @param int    $expires
+     *
      * @throws \Exception
+     *
+     * @return string
      */
     protected function generateSign(string $identifier, int $expires = 15552000): string
     {
