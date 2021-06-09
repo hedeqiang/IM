@@ -3,7 +3,10 @@
 <p align="center">腾讯云 IM.</p>
 
 ![StyleCI build status](https://github.styleci.io/repos/220258775/shield) 
-[![Total Downloads](https://poser.pugx.org/hedeqiang/ten-im/downloads)](https://packagist.org/packages/hedeqiang/ten-im) 
+[![Latest Stable Version](https://poser.pugx.org/hedeqiang/ten-im/v)](//packagist.org/packages/hedeqiang/ten-im) 
+[![Total Downloads](https://poser.pugx.org/hedeqiang/ten-im/downloads)](//packagist.org/packages/hedeqiang/ten-im) 
+[![Latest Unstable Version](https://poser.pugx.org/hedeqiang/ten-im/v/unstable)](//packagist.org/packages/hedeqiang/ten-im) 
+[![License](https://poser.pugx.org/hedeqiang/ten-im/license)](//packagist.org/packages/hedeqiang/ten-im)
 
 ## 安装
 
