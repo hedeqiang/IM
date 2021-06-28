@@ -35,8 +35,8 @@ class Config implements ArrayAccess
     /**
      * Get an item from an array using "dot" notation.
      *
-     * @param  string  $key
-     * @param mixed    $default
+     * @param string $key
+     * @param mixed  $default
      *
      * @return mixed
      */
@@ -62,8 +62,8 @@ class Config implements ArrayAccess
     /**
      * Set an array item to a given value using "dot" notation.
      *
-     * @param  string  $key
-     * @param mixed    $value
+     * @param string $key
+     * @param mixed  $value
      *
      * @return array
      */
@@ -89,7 +89,7 @@ class Config implements ArrayAccess
     /**
      * Determine if the given configuration value exists.
      *
-     * @param  string  $key
+     * @param string $key
      *
      * @return bool
      */

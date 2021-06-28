@@ -12,8 +12,8 @@
 namespace Hedeqiang\TenIM;
 
 use Exception;
-use Hedeqiang\TenIM\Exceptions\TenIMException;
 use Hedeqiang\TenIM\Exceptions\HttpException;
+use Hedeqiang\TenIM\Exceptions\TenIMException;
 use Hedeqiang\TenIM\Traits\HasHttpRequest;
 use Tencent\TLSSigAPIv2;
 
@@ -40,13 +40,14 @@ class IM
     }
 
     /**
-     * @param  string  $servername
-     * @param  string  $command
-     * @param  array   $params
+     * @param string $servername
+     * @param string $command
+     * @param array  $params
      *
-     * @return array
      * @throws HttpException
      * @throws TenIMException
+     *
+     * @return array
      */
     public function send(string $servername, string $command, array $params = []): array
     {
@@ -66,11 +67,12 @@ class IM
     /**
      * Build endpoint url.
      *
-     * @param  string  $servername
-     * @param  string  $command
+     * @param string $servername
+     * @param string $command
+     *
+     * @throws Exception
      *
      * @return string
-     * @throws Exception
      */
     protected function buildEndpoint(string $servername, string $command): string
     {

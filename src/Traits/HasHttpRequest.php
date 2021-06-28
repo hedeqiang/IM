@@ -22,9 +22,9 @@ trait HasHttpRequest
     /**
      * Make a get request.
      *
-     * @param  string  $endpoint
-     * @param  array   $query
-     * @param  array   $headers
+     * @param string $endpoint
+     * @param array  $query
+     * @param array  $headers
      *
      * @return array
      */
@@ -39,9 +39,9 @@ trait HasHttpRequest
     /**
      * Make a post request.
      *
-     * @param  string  $endpoint
-     * @param  array   $params
-     * @param  array   $headers
+     * @param string $endpoint
+     * @param array  $params
+     * @param array  $headers
      *
      * @return array
      */
@@ -57,8 +57,8 @@ trait HasHttpRequest
      * Make a post request with json params.
      *
      * @param       $endpoint
-     * @param  array  $params
-     * @param  array  $headers
+     * @param array $params
+     * @param array $headers
      *
      * @return array
      */
@@ -73,9 +73,9 @@ trait HasHttpRequest
     /**
      * Make a http request.
      *
-     * @param  string  $method
-     * @param  string  $endpoint
-     * @param  array   $options  http://docs.guzzlephp.org/en/latest/request-options.html
+     * @param string $method
+     * @param string $endpoint
+     * @param array  $options  http://docs.guzzlephp.org/en/latest/request-options.html
      *
      * @return array
      */
@@ -100,7 +100,7 @@ trait HasHttpRequest
     /**
      * Return http client.
      *
-     * @param  array  $options
+     * @param array $options
      *
      * @return Client
      *
