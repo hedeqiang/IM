@@ -12,12 +12,22 @@
         {
             "name": "hedeqiang",
             "email": "laravel_code@163.com"
+        },
+        {
+            "name": "houseme",
+            "email": "houseme@outlook.com"
         }
     ],
     "require": {
         "php": ">=7.0",
         "tencent/tls-sig-api-v2": "^1.1",
-        "guzzlehttp/guzzle": "^6.4|^7.0"
+        "guzzlehttp/guzzle": "^6.4|^7.0",
+        "ext-json": "*",
+        "ext-simplexml": "*"
+    }
+    ,
+    "require-dev": {
+        "roave/security-advisories": "dev-latest"
     },
     "autoload": {
         "psr-4": {

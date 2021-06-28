@@ -11,7 +11,8 @@
 
 namespace Hedeqiang\TenIM;
 
-use Hedeqiang\TenIM\Exceptions\Exception;
+use Exception;
+use Hedeqiang\TenIM\Exceptions\TenIMException;
 use Hedeqiang\TenIM\Exceptions\HttpException;
 use Hedeqiang\TenIM\Traits\HasHttpRequest;
 use Tencent\TLSSigAPIv2;
@@ -28,25 +29,30 @@ class IM
 
     protected $config;
 
+    /****
+     * IM constructor.
+     *
+     * @param  array  $config
+     */
     public function __construct(array $config)
     {
         $this->config = new Config($config);
     }
 
     /**
-     * @param string $servername
-     * @param string $command
-     *
-     * @throws Exception
-     * @throws HttpException
+     * @param  string  $servername
+     * @param  string  $command
+     * @param  array   $params
      *
      * @return array
+     * @throws HttpException
+     * @throws TenIMException
      */
-    public function send($servername, $command, array $params = [])
+    public function send(string $servername, string $command, array $params = []): array
     {
         try {
             $result = $this->postJson($this->buildEndpoint($servername, $command), $params);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             throw new HttpException($e->getMessage(), $e->getCode(), $e);
         }
 
@@ -54,13 +60,17 @@ class IM
             return $result;
         }
 
-        throw new Exception('Tim REST API error: '.json_encode($result));
+        throw new TenIMException('Tim REST API error: '.json_encode($result));
     }
 
     /**
      * Build endpoint url.
      *
-     * @throws \Exception
+     * @param  string  $servername
+     * @param  string  $command
+     *
+     * @return string
+     * @throws Exception
      */
     protected function buildEndpoint(string $servername, string $command): string
     {
@@ -68,11 +78,11 @@ class IM
             'sdkappid'    => $this->config->get('sdk_app_id'),
             'identifier'  => $this->config->get('identifier'),
             'usersig'     => $this->generateSign($this->config->get('identifier')),
-            'random'      => mt_rand(0, 4294967295),
+            'random'      => random_int(0, 4294967295),
             'contenttype' => self::ENDPOINT_FORMAT,
         ]);
 
-        return \sprintf(self::ENDPOINT_TEMPLATE, self::ENDPOINT_VERSION, $servername, $command, $query);
+        return sprintf(self::ENDPOINT_TEMPLATE, self::ENDPOINT_VERSION, $servername, $command, $query);
     }
 
     /**
@@ -81,7 +91,7 @@ class IM
      * @param string $identifier
      * @param int    $expires
      *
-     * @throws \Exception
+     * @throws Exception
      *
      * @return string
      */

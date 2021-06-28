@@ -11,9 +11,15 @@
 
 namespace Hedeqiang\TenIM;
 
+/***
+ * Class ServiceProvider
+ *
+ * @package Hedeqiang\TenIM
+ */
 class ServiceProvider extends \Illuminate\Support\ServiceProvider
 {
     protected $defer = true;
+
 
     public function boot()
     {
@@ -31,7 +37,10 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         $this->app->alias(IM::class, 'im');
     }
 
-    public function provides()
+    /***
+     * @return string[]
+     */
+    public function provides(): array
     {
         return [IM::class, 'im'];
     }

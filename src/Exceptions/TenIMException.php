@@ -11,6 +11,13 @@
 
 namespace Hedeqiang\TenIM\Exceptions;
 
-class Exception extends \Exception
+use Exception;
+
+/****
+ * Class TenIMException
+ *
+ * @package Hedeqiang\TenIM\Exceptions
+ */
+class TenIMException extends Exception
 {
 }

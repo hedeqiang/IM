@@ -11,6 +11,11 @@
 
 namespace Hedeqiang\TenIM\Exceptions;
 
-class InvalidArgumentException extends Exception
+/****
+ * Class InvalidArgumentException
+ *
+ * @package Hedeqiang\TenIM\Exceptions
+ */
+class InvalidArgumentException extends TenIMException
 {
 }

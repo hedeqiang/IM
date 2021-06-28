@@ -13,6 +13,11 @@ namespace Hedeqiang\TenIM\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
+/****
+ * Class IM
+ *
+ * @package Hedeqiang\TenIM\Facades
+ */
 class IM extends Facade
 {
     /**
@@ -20,7 +25,7 @@ class IM extends Facade
      *
      * @return string
      */
-    public static function getFacadeAccessor()
+    public static function getFacadeAccessor(): string
     {
         return 'im';
     }
@@ -30,7 +35,7 @@ class IM extends Facade
      *
      * @return \Hedeqiang\TenIM\IM
      */
-    public static function im()
+    public static function im(): \Hedeqiang\TenIM\IM
     {
         return app('im');
     }

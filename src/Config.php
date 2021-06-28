@@ -35,12 +35,12 @@ class Config implements ArrayAccess
     /**
      * Get an item from an array using "dot" notation.
      *
-     * @param string $key
-     * @param mixed  $default
+     * @param  string  $key
+     * @param mixed    $default
      *
      * @return mixed
      */
-    public function get($key, $default = null)
+    public function get(string $key, $default = null)
     {
         $config = $this->config;
         if (is_null($key)) {
@@ -62,12 +62,12 @@ class Config implements ArrayAccess
     /**
      * Set an array item to a given value using "dot" notation.
      *
-     * @param string $key
-     * @param mixed  $value
+     * @param  string  $key
+     * @param mixed    $value
      *
      * @return array
      */
-    public function set($key, $value)
+    public function set(string $key, $value): array
     {
         if (is_null($key)) {
             throw new InvalidArgumentException('Invalid config key.');
@@ -89,11 +89,11 @@ class Config implements ArrayAccess
     /**
      * Determine if the given configuration value exists.
      *
-     * @param string $key
+     * @param  string  $key
      *
      * @return bool
      */
-    public function has($key)
+    public function has(string $key): bool
     {
         return (bool) $this->get($key);
     }
@@ -114,7 +114,7 @@ class Config implements ArrayAccess
      *
      * @since 5.0.0
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return array_key_exists($offset, $this->config);
     }

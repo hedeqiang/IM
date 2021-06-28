@@ -11,6 +11,11 @@
 
 namespace Hedeqiang\TenIM\Exceptions;
 
-class HttpException extends Exception
+/****
+ * Class HttpException
+ *
+ * @package Hedeqiang\TenIM\Exceptions
+ */
+class HttpException extends TenIMException
 {
 }
