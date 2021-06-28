@@ -20,7 +20,6 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
 {
     protected $defer = true;
 
-
     public function boot()
     {
         $this->publishes([
