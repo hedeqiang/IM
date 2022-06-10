@@ -13,7 +13,6 @@
 ```shell
 $ composer require hedeqiang/ten-im -vvv
 ```
-> [Hyperf 扩展包](https://github.com/hedeqiang/hyperf-im)
 
 > 说明：本项目默认会引入 [tencent/tls-sig-api-v2](https://github.com/tencentyun/tls-sig-api-v2-php) 扩展包，所以你不需要手动引入 `tencent/tls-sig-api-v2`,否则可能会造成依赖冲突
 
@@ -148,6 +147,28 @@ print_r($im->send('openim','sendmsg',$params));
     "MsgKey":"748144182_1287657_1573179125"
 }
 ```
+
+## 在 Hyperf 中使用
+#### 发布配置文件
+```php
+php bin/hyperf.php vendor:publish hedeqiang/ten-im
+```
+
+##### 编写 .env 文件
+```
+SDK_APP_ID=
+IDENTIFIER=
+SECRET_KEY=
+```
+
+##### 使用
+```php
+use Hedeqiang\TenIM\IM;
+use Hyperf\Utils\ApplicationContext;
+
+$response = ApplicationContext::getContainer()->get(IM::class)->send($servername,$command,$params);
+```
+
 
 
 

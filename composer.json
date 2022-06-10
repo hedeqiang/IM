@@ -39,6 +39,9 @@
             "providers": [
                 "Hedeqiang\\TenIM\\ServiceProvider"
             ]
+        },
+        "hyperf": {
+            "config": "Hedeqiang\\TenIM\\ConfigProvider"
         }
     }
 }

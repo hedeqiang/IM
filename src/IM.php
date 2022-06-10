@@ -17,7 +17,7 @@ use Hedeqiang\TenIM\Exceptions\TenIMException;
 use Hedeqiang\TenIM\Traits\HasHttpRequest;
 use Tencent\TLSSigAPIv2;
 
-class IM
+class IM implements IMInterface
 {
     use HasHttpRequest;
 
