@@ -174,9 +174,11 @@ $response = ApplicationContext::getContainer()->get(IM::class)->send($servername
 
 ## 在 Laravel 中使用
 #### 发布配置文件
+
 ```php
 php artisan vendor:publish --provider="Hedeqiang\TenIM\ServiceProvider"
 ```
+
 ##### 编写 .env 文件
 ```
 SDK_APP_ID=
@@ -188,6 +190,7 @@ SECRET_KEY=
 
 ```php
 use Hedeqiang\TenIM\IM;
+
 public function index(IM $im)
 {
     $params = [
@@ -210,7 +213,6 @@ public function index(IM $im)
 ```
 ### 服务名访问
 ```php
-
 public function index()
 {
     $params = [
@@ -235,6 +237,7 @@ public function index()
 ### Facades 门面使用(可以提示)
 ```php
 use Hedeqiang\TenIM\Facades\IM;
+
 $params = [
         'SyncOtherMachine' => 1, // 消息不同步至发送方
         'From_Account' => '1',
