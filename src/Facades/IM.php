@@ -9,14 +9,14 @@
  * with this source code in the file LICENSE.
  */
 
-namespace Hedeqiang\TenIM\Facades;
+namespace TencentIM\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
 /****
  * Class IM
  *
- * @package Hedeqiang\TenIM\Facades
+ * @package TencentIM\Facades
  */
 class IM extends Facade
 {
@@ -33,9 +33,9 @@ class IM extends Facade
     /**
      * Return the facade accessor.
      *
-     * @return \Hedeqiang\TenIM\IM
+     * @return TencentIM\IM
      */
-    public static function im(): \Hedeqiang\TenIM\IM
+    public static function im(): \TencentIM\IM
     {
         return app('im');
     }

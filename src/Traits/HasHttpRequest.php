@@ -9,7 +9,7 @@
  * with this source code in the file LICENSE.
  */
 
-namespace Hedeqiang\TenIM\Traits;
+namespace TencentIM\Traits;
 
 use GuzzleHttp\Client;
 use Psr\Http\Message\ResponseInterface;

@@ -9,14 +9,14 @@
  * with this source code in the file LICENSE.
  */
 
-namespace Hedeqiang\TenIM\Exceptions;
+namespace TencentIM\Exceptions;
 
 use Exception;
 
 /****
  * Class TenIMException
  *
- * @package Hedeqiang\TenIM\Exceptions
+ * @package TencentIM\Exceptions
  */
 class TenIMException extends Exception
 {

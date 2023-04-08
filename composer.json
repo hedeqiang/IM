@@ -1,5 +1,5 @@
 {
-    "name": "hedeqiang\/ten-im",
+    "name": "zys5210\/tencent_im",
     "description": "腾讯云即时通信 SDK for PHP",
     "keywords": [
         "php",
@@ -10,12 +10,8 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "hedeqiang",
-            "email": "laravel_code@163.com"
-        },
-        {
-            "name": "houseme",
-            "email": "houseme@outlook.com"
+            "name": "song",
+            "email": "53804059@qq.com"
         }
     ],
     "require": {
@@ -31,17 +27,17 @@
     },
     "autoload": {
         "psr-4": {
-            "Hedeqiang\\TenIM\\": "./src/"
+            "TencentIM\\": "./src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Hedeqiang\\TenIM\\ServiceProvider"
+                "TencentIM\\ServiceProvider"
             ]
         },
         "hyperf": {
-            "config": "Hedeqiang\\TenIM\\ConfigProvider"
+            "config": "TencentIM\\ConfigProvider"
         }
     }
 }

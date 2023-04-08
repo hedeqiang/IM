@@ -9,12 +9,12 @@
  * with this source code in the file LICENSE.
  */
 
-namespace Hedeqiang\TenIM\Exceptions;
+namespace TencentIM\Exceptions;
 
 /****
  * Class InvalidArgumentException
  *
- * @package Hedeqiang\TenIM\Exceptions
+ * @package TencentIM\Exceptions
  */
 class InvalidArgumentException extends TenIMException
 {

@@ -2,16 +2,10 @@
 
 <p align="center">腾讯云 IM.</p>
 
-![StyleCI build status](https://github.styleci.io/repos/220258775/shield) 
-[![Latest Stable Version](https://poser.pugx.org/hedeqiang/ten-im/v)](//packagist.org/packages/hedeqiang/ten-im) 
-[![Total Downloads](https://poser.pugx.org/hedeqiang/ten-im/downloads)](//packagist.org/packages/hedeqiang/ten-im) 
-[![Latest Unstable Version](https://poser.pugx.org/hedeqiang/ten-im/v/unstable)](//packagist.org/packages/hedeqiang/ten-im) 
-[![License](https://poser.pugx.org/hedeqiang/ten-im/license)](//packagist.org/packages/hedeqiang/ten-im)
-
 ## 安装
 
 ```shell
-$ composer require hedeqiang/ten-im -vvv
+$ composer require zys5210/tencent_im -vvv
 ```
 
 > 说明：本项目默认会引入 [tencent/tls-sig-api-v2](https://github.com/tencentyun/tls-sig-api-v2-php) 扩展包，所以你不需要手动引入 `tencent/tls-sig-api-v2`,否则可能会造成依赖冲突
@@ -51,7 +45,7 @@ $ composer require hedeqiang/ten-im -vvv
 
 require __DIR__ .'/vendor/autoload.php';
 
-use Hedeqiang\TenIM\IM;
+use TencentIM\IM;
 
 $config = [
     'sdk_app_id' => '',
@@ -60,8 +54,8 @@ $config = [
 ];
 $im = new IM($config);
 $params = [
-    'Identifier' => "hedeqiang",
-    'Nick'       => 'hedeqiang',
+    'Identifier' => "test",
+    'Nick'       => 'test',
     'FaceUrl'    => '',
 ];
 
@@ -73,7 +67,7 @@ print_r($im->send('im_open_login_svc','account_import',$params));
 ```php
 <?php
 $params = [
-    'To_Account' => ['hedeqiang']
+    'To_Account' => ['test']
 ];
 
 print_r($im->send('openim','querystate',$params));
@@ -93,9 +87,9 @@ print_r($im->send('openim','querystate',$params));
 ### 设置资料
 ```php
 $params = [
-    'From_Account' => 'hedeqiang',
+    'From_Account' => 'test',
         'ProfileItem' => [
-            ['Tag' => 'Tag_Profile_IM_Nick', 'Value' => 'hedeqiang'],
+            ['Tag' => 'Tag_Profile_IM_Nick', 'Value' => 'test'],
             ['Tag' => 'Tag_Profile_IM_Gender', 'Value' => 'Gender_Type_Male'],
             ['Tag' => 'Tag_Profile_IM_BirthDay', 'Value' => 19940410],
             ['Tag' => 'Tag_Profile_IM_SelfSignature', 'Value' => '程序人生的寂静欢喜'],
@@ -151,7 +145,7 @@ print_r($im->send('openim','sendmsg',$params));
 ## 在 Hyperf 中使用
 #### 发布配置文件
 ```php
-php bin/hyperf.php vendor:publish hedeqiang/ten-im
+php bin/hyperf.php vendor:publish zys5210/tencent_im
 ```
 
 ##### 编写 .env 文件
@@ -163,7 +157,7 @@ SECRET_KEY=
 
 ##### 使用
 ```php
-use Hedeqiang\TenIM\IM;
+use TencentIM\IM;
 use Hyperf\Utils\ApplicationContext;
 
 $response = ApplicationContext::getContainer()->get(IM::class)->send($servername,$command,$params);
@@ -176,7 +170,7 @@ $response = ApplicationContext::getContainer()->get(IM::class)->send($servername
 #### 发布配置文件
 
 ```php
-php artisan vendor:publish --provider="Hedeqiang\TenIM\ServiceProvider"
+php artisan vendor:publish --provider="TencentIM\ServiceProvider"
 ```
 
 ##### 编写 .env 文件
@@ -189,7 +183,7 @@ SECRET_KEY=
 ### 方法参数注入
 
 ```php
-use Hedeqiang\TenIM\IM;
+use TencentIM\IM;
 
 public function index(IM $im)
 {
@@ -236,7 +230,7 @@ public function index()
 
 ### Facades 门面使用(可以提示)
 ```php
-use Hedeqiang\TenIM\Facades\IM;
+use TencentIM\Facades\IM;
 
 $params = [
         'SyncOtherMachine' => 1, // 消息不同步至发送方
@@ -260,16 +254,6 @@ $response = IM::im()->send('openim','sendmsg',$params);
 更多用法请参考 [REST API 接口列表](https://cloud.tencent.com/document/product/269/1520)
 
 TODO
-
-## Contributing
-
-You can contribute in one of three ways:
-
-1. File bug reports using the [issue tracker](https://github.com/hedeqiang/IM/issues).
-2. Answer questions or fix bugs on the [issue tracker](https://github.com/hedeqiang/IM/issues).
-3. Contribute new features or update the wiki.
-
-_The code contribution process is not very formal. You just need to make sure that you follow the PSR-0, PSR-1, and PSR-2 coding guidelines. Any new code contributions must be accompanied by unit tests where applicable._
 
 ## License
 

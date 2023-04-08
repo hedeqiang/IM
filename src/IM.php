@@ -1,20 +1,11 @@
 <?php
 
-/*
- * This file is part of the hedeqiang/ten-im.
- *
- * (c) hedeqiang<laravel_code@163.com>
- *
- * This source file is subject to the MIT license that is bundled
- * with this source code in the file LICENSE.
- */
-
-namespace Hedeqiang\TenIM;
+namespace TencentIM;
 
 use Exception;
-use Hedeqiang\TenIM\Exceptions\HttpException;
-use Hedeqiang\TenIM\Exceptions\TenIMException;
-use Hedeqiang\TenIM\Traits\HasHttpRequest;
+use TencentIM\Exceptions\HttpException;
+use TencentIM\Exceptions\TenIMException;
+use TencentIM\Traits\HasHttpRequest;
 use Tencent\TLSSigAPIv2;
 
 class IM implements IMInterface
