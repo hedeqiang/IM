@@ -57,7 +57,9 @@ $config = [
     'sdk_app_id' => '',
     'identifier' => '',
     'secret_key' => '',
+    'region'     => 'zh' // zh、sgp、kr、ger、ind、usa
 ];
+
 $im = new IM($config);
 $params = [
     'Identifier' => "hedeqiang",
@@ -159,6 +161,7 @@ php bin/hyperf.php vendor:publish hedeqiang/ten-im
 SDK_APP_ID=
 IDENTIFIER=
 SECRET_KEY=
+REGION=     // zh、sgp、kr、ger、ind、usa
 ```
 
 ##### 使用
@@ -184,6 +187,7 @@ php artisan vendor:publish --provider="Hedeqiang\TenIM\ServiceProvider"
 SDK_APP_ID=
 IDENTIFIER=
 SECRET_KEY=
+REGION=     // zh、sgp、kr、ger、ind、usa
 ```
 
 ### 方法参数注入
