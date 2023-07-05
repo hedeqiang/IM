@@ -21,18 +21,24 @@ class IM implements IMInterface
 {
     use HasHttpRequest;
 
-    const ENDPOINT_TEMPLATE = 'https://console.tim.qq.com/%s/%s/%s?%s';
+    const ENDPOINT_TEMPLATES = [
+        'zh' => 'https://console.tim.qq.com/%s/%s/%s?%s',
+        'sgp' => 'https://adminapisgp.im.qcloud.com/%s/%s/%s?%s',
+        'kr' => 'https://adminapikr.im.qcloud.com/%s/%s/%s?%s',
+        'ger' => 'https://adminapiger.im.qcloud.com/%s/%s/%s?%s',
+        'ind' => 'https://adminapiind.im.qcloud.com/%s/%s/%s?%s',
+        'usa' => 'https://adminapiusa.im.qcloud.com/%s/%s/%s?%s',
+    ];
 
     const ENDPOINT_VERSION = 'v4';
-
     const ENDPOINT_FORMAT = 'json';
 
     protected $config;
 
-    /****
+    /**
      * IM constructor.
      *
-     * @param  array  $config
+     * @param array $config
      */
     public function __construct(array $config)
     {
@@ -40,67 +46,67 @@ class IM implements IMInterface
     }
 
     /**
-     * @param string $servername
-     * @param string $command
-     * @param array  $params
+     * Send request to the IM server.
      *
-     * @throws HttpException
-     * @throws TenIMException
+     * @param string $serverName
+     * @param string $command
+     * @param array $params
      *
      * @return array
+     * @throws TenIMException|HttpException
+     * @throws Exception
      */
-    public function send(string $servername, string $command, array $params = []): array
+    public function send(string $serverName, string $command, array $params = []): array
     {
-        try {
-            $result = $this->postJson($this->buildEndpoint($servername, $command), $params);
-        } catch (Exception $e) {
-            throw new HttpException($e->getMessage(), $e->getCode(), $e);
-        }
+        $endpoint = $this->buildEndpoint($serverName, $command);
+        $result = $this->postJson($endpoint, $params);
 
-        if (0 === $result['ErrorCode'] && 'OK' === $result['ActionStatus']) {
-            return $result;
-        }
-
-        throw new TenIMException('Tim REST API error: '.json_encode($result));
+        return $result;
     }
 
     /**
-     * Build endpoint url.
+     * Build the endpoint URL.
      *
-     * @param string $servername
+     * @param string $serverName
      * @param string $command
      *
-     * @throws Exception
-     *
      * @return string
+     * @throws Exception
      */
-    protected function buildEndpoint(string $servername, string $command): string
+    protected function buildEndpoint(string $serverName, string $command): string
     {
+        $region = $this->config->get('region','zh');
+        $endpointTemplate = self::ENDPOINT_TEMPLATES[$region];
+
         $query = http_build_query([
-            'sdkappid'    => $this->config->get('sdk_app_id'),
-            'identifier'  => $this->config->get('identifier'),
-            'usersig'     => $this->generateSign($this->config->get('identifier')),
-            'random'      => random_int(0, 4294967295),
+            'sdkappid' => $this->config->get('sdk_app_id'),
+            'identifier' => $this->config->get('identifier'),
+            'usersig' => $this->generateSign($this->config->get('identifier')),
+            'random' => random_int(0, 4294967295),
             'contenttype' => self::ENDPOINT_FORMAT,
         ]);
 
-        return sprintf(self::ENDPOINT_TEMPLATE, self::ENDPOINT_VERSION, $servername, $command, $query);
+        return sprintf(
+            $endpointTemplate,
+            self::ENDPOINT_VERSION,
+            $serverName,
+            $command,
+            $query
+        );
     }
 
     /**
-     * Generate Sign.
+     * Generate the user signature.
      *
      * @param string $identifier
-     * @param int    $expires
-     *
-     * @throws Exception
+     * @param int $expires
      *
      * @return string
+     * @throws Exception
      */
     protected function generateSign(string $identifier, int $expires = 15552000): string
     {
         $api = new TLSSigAPIv2($this->config->get('sdk_app_id'), $this->config->get('secret_key'));
-
         return $api->genUserSig($identifier, $expires);
     }
 }
