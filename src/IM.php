@@ -22,9 +22,9 @@ class IM implements IMInterface
     use HasHttpRequest;
 
     const ENDPOINT_TEMPLATES = [
-        'zh' => 'https://console.tim.qq.com/%s/%s/%s?%s',
+        'zh'  => 'https://console.tim.qq.com/%s/%s/%s?%s',
         'sgp' => 'https://adminapisgp.im.qcloud.com/%s/%s/%s?%s',
-        'kr' => 'https://adminapikr.im.qcloud.com/%s/%s/%s?%s',
+        'kr'  => 'https://adminapikr.im.qcloud.com/%s/%s/%s?%s',
         'ger' => 'https://adminapiger.im.qcloud.com/%s/%s/%s?%s',
         'ind' => 'https://adminapiind.im.qcloud.com/%s/%s/%s?%s',
         'usa' => 'https://adminapiusa.im.qcloud.com/%s/%s/%s?%s',
@@ -50,11 +50,12 @@ class IM implements IMInterface
      *
      * @param string $serverName
      * @param string $command
-     * @param array $params
+     * @param array  $params
      *
-     * @return array
      * @throws TenIMException|HttpException
      * @throws Exception
+     *
+     * @return array
      */
     public function send(string $serverName, string $command, array $params = []): array
     {
@@ -70,19 +71,20 @@ class IM implements IMInterface
      * @param string $serverName
      * @param string $command
      *
-     * @return string
      * @throws Exception
+     *
+     * @return string
      */
     protected function buildEndpoint(string $serverName, string $command): string
     {
-        $region = $this->config->get('region','zh');
+        $region = $this->config->get('region', 'zh');
         $endpointTemplate = self::ENDPOINT_TEMPLATES[$region];
 
         $query = http_build_query([
-            'sdkappid' => $this->config->get('sdk_app_id'),
-            'identifier' => $this->config->get('identifier'),
-            'usersig' => $this->generateSign($this->config->get('identifier')),
-            'random' => random_int(0, 4294967295),
+            'sdkappid'    => $this->config->get('sdk_app_id'),
+            'identifier'  => $this->config->get('identifier'),
+            'usersig'     => $this->generateSign($this->config->get('identifier')),
+            'random'      => random_int(0, 4294967295),
             'contenttype' => self::ENDPOINT_FORMAT,
         ]);
 
@@ -99,14 +101,16 @@ class IM implements IMInterface
      * Generate the user signature.
      *
      * @param string $identifier
-     * @param int $expires
+     * @param int    $expires
+     *
+     * @throws Exception
      *
      * @return string
-     * @throws Exception
      */
     protected function generateSign(string $identifier, int $expires = 15552000): string
     {
         $api = new TLSSigAPIv2($this->config->get('sdk_app_id'), $this->config->get('secret_key'));
+
         return $api->genUserSig($identifier, $expires);
     }
 }
