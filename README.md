@@ -23,6 +23,21 @@ $ composer require hedeqiang/ten-im -vvv
 
 [REST API 接口列表](https://cloud.tencent.com/document/product/269/1520)
 
+```php
+require __DIR__ .'/vendor/autoload.php';
+
+use Hedeqiang\TenIM\IM;
+
+$config = [
+    'sdk_app_id' => '',
+    'identifier' => '',
+    'secret_key' => '',
+    'region'     => 'zh' // zh、sgp、kr、ger、ind、usa
+];
+
+$im = new IM($config);
+```
+
 ## 使用
 
 > 其中 `send` 方法接收三个参数。第一个参数 $servicename : 内部服务名，不同的 servicename 对应不同的服务类型；第二个参数 `$command`：命令字，与 servicename 组合用来标识具体的业务功能；第三个参数为请求包主体 
@@ -42,22 +57,6 @@ $ composer require hedeqiang/ten-im -vvv
         }
     ]
 }
-```
-
-## 配置
-```php
-require __DIR__ .'/vendor/autoload.php';
-
-use Hedeqiang\TenIM\IM;
-
-$config = [
-    'sdk_app_id' => '',
-    'identifier' => '',
-    'secret_key' => '',
-    'region'     => 'zh' // zh、sgp、kr、ger、ind、usa
-];
-
-$im = new IM($config);
 ```
 
 ###  导入单个帐号
