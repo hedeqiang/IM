@@ -25,8 +25,6 @@ $ composer require hedeqiang/ten-im -vvv
 
 ## 使用
 
-
-
 > 其中 `send` 方法接收三个参数。第一个参数 $servicename : 内部服务名，不同的 servicename 对应不同的服务类型；第二个参数 `$command`：命令字，与 servicename 组合用来标识具体的业务功能；第三个参数为请求包主体 
 
 > 示例：`v4/im_open_login_svc/account_import`，其中 `im_open_login_svc` 为 `servicename`； `account_import` 为 `command`
@@ -46,9 +44,8 @@ $ composer require hedeqiang/ten-im -vvv
 }
 ```
 
-###  导入单个帐号
+## 配置
 ```php
-
 require __DIR__ .'/vendor/autoload.php';
 
 use Hedeqiang\TenIM\IM;
@@ -61,6 +58,10 @@ $config = [
 ];
 
 $im = new IM($config);
+```
+
+###  导入单个帐号
+```php
 $params = [
     'Identifier' => "hedeqiang",
     'Nick'       => 'hedeqiang',
